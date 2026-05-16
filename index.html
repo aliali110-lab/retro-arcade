@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ali's Retro Arcade — Support</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: #0a0d20;
+    color: #e8e8f0;
+    font-family: "Menlo", "Courier New", monospace;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+  header {
+    text-align: center;
+    padding: 32px 0 40px;
+    border-bottom: 1px solid #1e2440;
+    margin-bottom: 40px;
+  }
+  h1 {
+    color: #ffdc00;
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 18px rgba(255, 220, 0, 0.25);
+  }
+  .tagline {
+    color: #6ee7ff;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
+  .deck { color: #a8aec5; max-width: 540px; margin: 0 auto; font-size: 14px; }
+  h2 {
+    color: #ffdc00;
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    margin: 48px 0 18px;
+    border-left: 3px solid #ffdc00;
+    padding-left: 14px;
+    letter-spacing: 1px;
+  }
+  p, li { margin-bottom: 12px; color: #cbd0e0; }
+  a {
+    color: #6ee7ff;
+    text-decoration: none;
+    border-bottom: 1px dotted #6ee7ff;
+  }
+  a:hover { color: #ffdc00; border-bottom-color: #ffdc00; }
+
+  /* Game cards */
+  .games { display: flex; flex-direction: column; gap: 20px; }
+  .game-card {
+    background: #131836;
+    border: 1px solid #2a3060;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .game-card .icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    image-rendering: pixelated;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(255, 220, 0, 0.18);
+  }
+  .game-card .meta { flex: 1; }
+  .game-card h3 {
+    color: #fff;
+    font-family: "Avenir Next", "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .game-card .desc { color: #a8aec5; font-size: 13px; margin-bottom: 8px; }
+  .game-card .status {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .status-live { background: rgba(110, 231, 255, 0.15); color: #6ee7ff; border: 1px solid #6ee7ff; }
+  .status-soon { background: rgba(255, 220, 0, 0.10); color: #ffdc00; border: 1px solid #6a5a00; }
+
+  /* Coming-soon slot */
+  .game-card.coming-soon {
+    border-style: dashed;
+    opacity: 0.7;
+  }
+  .game-card.coming-soon .icon-placeholder {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    border: 2px dashed #2a3060;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2a3060;
+    font-size: 32px;
+  }
+
+  /* Contact */
+  .contact-box {
+    background: #131836;
+    border: 1px solid #ffdc00;
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .contact-box .email {
+    color: #ffdc00;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-top: 6px;
+    border-bottom: none;
+  }
+
+  /* FAQ */
+  .faq dt {
+    color: #fff;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+  .faq dd {
+    margin-bottom: 14px;
+    padding-left: 16px;
+    color: #cbd0e0;
+  }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid #1e2440;
+    color: #6b7390;
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ALI'S RETRO ARCADE</h1>
+  <div class="tagline">★ ★ ★ &nbsp; HANDMADE PIXEL GAMES &nbsp; ★ ★ ★</div>
+  <p class="deck">A collection of handmade pixel-art arcade games for iPhone. No ads. No in-app purchases. No tracking. Just the games.</p>
+</header>
+
+<section>
+  <h2>Games</h2>
+  <div class="games">
+
+    <div class="game-card">
+      <img src="icon.png" alt="FighterJet Retro icon" class="icon">
+      <div class="meta">
+        <h3>FighterJet Retro</h3>
+        <span class="status status-live">★ AVAILABLE</span>
+        <p class="desc">A pixel-art arcade shoot-'em-up. 100 levels, boss battles every 5 levels, retro chiptune soundtrack. Completely offline.</p>
+      </div>
+    </div>
+
+    <div class="game-card coming-soon">
+      <div class="icon-placeholder">?</div>
+      <div class="meta">
+        <h3>More games coming soon</h3>
+        <span class="status status-soon">IN DEVELOPMENT</span>
+        <p class="desc">New arcade titles in the works. Check back here for updates.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Need help?</h2>
+  <div class="contact-box">
+    Email us directly:
+    <a href="mailto:ali.ali110@gmail.com" class="email">ali.ali110@gmail.com</a>
+  </div>
+  <p>We aim to reply within 48 hours. When reporting a bug, please include the game name, your device model, and your iOS version so we can help faster.</p>
+</section>
+
+<section>
+  <h2>Common questions</h2>
+  <dl class="faq">
+
+    <dt>How do I save my progress?</dt>
+    <dd>All games save progress automatically. Look for a <strong>Load</strong> button on the main menu to resume.</dd>
+
+    <dt>How do I turn off the music or sound effects?</dt>
+    <dd>Open the <strong>Audio</strong> menu from the main screen. Music and sound effects can be toggled independently, with separate volume controls.</dd>
+
+    <dt>Do the games work offline?</dt>
+    <dd>Yes — completely. No internet connection is required at any point.</dd>
+
+    <dt>Do the games collect any of my data?</dt>
+    <dd>No. We collect no personal information. Game data (high scores, settings, progress) is stored locally on your device using iOS UserDefaults. Nothing leaves your device.</dd>
+
+    <dt>How do I delete my saved data?</dt>
+    <dd>Uninstall the game — iOS will delete all local data with it.</dd>
+
+    <dt>Which iPhone models are supported?</dt>
+    <dd>iPhone X and newer, running iOS 14 or later. Games are portrait-only and designed for one-thumb play.</dd>
+
+    <dt>Will there be more games / updates?</dt>
+    <dd>Yes — new games and updates are planned. Watch this page or the App Store for new releases.</dd>
+
+  </dl>
+</section>
+
+<section>
+  <h2>Report a bug or request a feature</h2>
+  <p>Email <a href="mailto:ali.ali110@gmail.com?subject=Arcade%20—%20Bug%20Report">ali.ali110@gmail.com</a> with a description of what happened, the game name, your device model, and the iOS version. Screenshots help.</p>
+</section>
+
+<footer>
+  &copy; 2026 Ali's Retro Arcade. All rights reserved.<br>
+  This page is hosted on GitHub Pages.
+</footer>
+
+</body>
+</html>
