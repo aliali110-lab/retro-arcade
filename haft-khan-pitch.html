@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAFT KHAN — Publisher Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dim: #7A5E2A;
+    --ink: #0D0A06;
+    --parchment: #F5EDD8;
+    --parchment-dark: #E8D9B8;
+    --blood: #8B1A1A;
+    --text: #2A1F0E;
+    --text-light: #5C4A2A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--parchment);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.4;
+  }
+
+  /* ORNAMENTAL DIVIDER */
+  .ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+    margin: 2rem 0;
+    opacity: 0.7;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 4rem 2rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, #1a1106 0%, var(--ink) 70%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(201,168,76,0.03) 40px,
+        rgba(201,168,76,0.03) 41px
+      );
+    border-bottom: 1px solid var(--gold-dim);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.15rem;
+    line-height: 1;
+    text-align: center;
+    animation: fadeUp 1s 0.2s ease both;
+    text-shadow:
+      0 0 80px rgba(201,168,76,0.3),
+      0 2px 0 rgba(0,0,0,0.8);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.5rem;
+    color: var(--parchment);
+    opacity: 0.5;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .hero-tagline {
+    margin-top: 3rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-style: italic;
+    color: var(--parchment-dark);
+    text-align: center;
+    max-width: 600px;
+    opacity: 0.85;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .hero-meta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .meta-pill {
+    border: 1px solid var(--gold-dim);
+    padding: 0.4rem 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2rem;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero-cta {
+    margin-top: 4rem;
+    animation: fadeUp 1s 1s ease both;
+  }
+
+  .btn-gold {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin: 2rem 0 0.75rem;
+    letter-spacing: 0.05rem;
+  }
+
+  p {
+    color: var(--parchment-dark);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+  }
+
+  /* KHANS GRID */
+  .khans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-dim);
+    margin: 2rem 0;
+  }
+
+  .khan-card {
+    background: var(--ink);
+    padding: 1.5rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .khan-card:hover { background: #15100A; }
+
+  .khan-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .khan-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .khan-desc {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    color: #9A8060;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 600px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar {
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 1.5rem;
+  }
+
+  .pillar-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: var(--gold);
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar-text {
+    font-size: 0.95rem;
+    color: #9A8060;
+    margin: 0;
+  }
+
+  /* COMPS TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .comp-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+
+  .comp-table td {
+    padding: 0.9rem 1rem;
+    color: #9A8060;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+    vertical-align: top;
+  }
+
+  .comp-table td:first-child { color: var(--parchment-dark); }
+
+  /* TRAILER */
+  .trailer-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin: 2rem 0;
+    border: 1px solid var(--gold-dim);
+  }
+
+  .trailer-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
+
+  /* MILESTONES */
+  .milestones {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 2rem;
+  }
+
+  .milestones::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .milestone {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 1rem;
+  }
+
+  .milestone::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.5rem;
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .milestone-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .milestone-title {
+    font-size: 1.05rem;
+    color: var(--parchment);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  .milestone-detail {
+    font-size: 0.9rem;
+    color: #9A8060;
+    margin: 0;
+  }
+
+  /* BUDGET */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gold-dim);
+    border: 1px solid var(--gold-dim);
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 500px) { .budget-grid { grid-template-columns: 1fr; } }
+
+  .budget-item {
+    background: var(--ink);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .budget-label { font-size: 0.9rem; color: #9A8060; }
+  .budget-value { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); }
+
+  .budget-total {
+    background: #0f0b05;
+    grid-column: 1 / -1;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gold-dim);
+  }
+
+  .budget-total .budget-label { color: var(--parchment); font-size: 1rem; }
+  .budget-total .budget-value { font-size: 1.3rem; }
+
+  /* CONTACT / ASK */
+  .ask-box {
+    border: 1px solid var(--gold-dim);
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    margin-top: 2rem;
+  }
+
+  .ask-box::before, .ask-box::after {
+    content: '◆';
+    position: absolute;
+    color: var(--gold);
+    font-size: 0.8rem;
+  }
+
+  .ask-box::before { top: -0.5rem; left: 50%; transform: translateX(-50%); }
+  .ask-box::after { bottom: -0.5rem; left: 50%; transform: translateX(-50%); }
+
+  .ask-amount {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: var(--gold);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .ask-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .contact-line {
+    font-size: 1rem;
+    color: var(--parchment-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-email {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05rem;
+  }
+
+  .contact-email:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* QUOTE BLOCK */
+  blockquote {
+    border-left: 2px solid var(--gold-dim);
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    font-style: italic;
+    color: var(--parchment-dark);
+    opacity: 0.8;
+    font-size: 1.15rem;
+  }
+
+  /* HIGHLIGHT */
+  .highlight { color: var(--gold); }
+
+  ul {
+    list-style: none;
+    margin: 1rem 0;
+  }
+
+  ul li {
+    color: #9A8060;
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+  }
+
+  ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+    font-size: 0.5rem;
+    top: 0.65rem;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(13,10,6,0.95), transparent);
+    pointer-events: none;
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3rem;
+    color: var(--gold);
+    pointer-events: all;
+  }
+
+  .nav-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    pointer-events: all;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">HAFT KHAN</span>
+  <span class="nav-tag">Publisher Pitch — Confidential</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">A Game by Ali — Pre-Production 2025</div>
+  <h1 class="hero-title">HAFT KHAN</h1>
+  <div class="hero-subtitle">The Seven Trials of Rostam</div>
+  <p class="hero-tagline">"A third-person action-puzzle game rooted in a 1,000-year-old Persian epic that has never been given a game worthy of it."</p>
+  <div class="hero-meta">
+    <span class="meta-pill">Third-Person Action</span>
+    <span class="meta-pill">Puzzle</span>
+    <span class="meta-pill">PC + Console</span>
+    <span class="meta-pill">Vertical Slice Funding</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#trailer" class="btn-gold">Watch Trailer ↓</a>
+  </div>
+</div>
+
+<!-- 1. EXECUTIVE SUMMARY -->
+<section class="reveal">
+  <div class="section-number">01 — Overview</div>
+  <h2>The Game at a Glance</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-title">Genre</div>
+      <p class="pillar-text">Third-Person Action-Puzzle</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Target Platforms</div>
+      <p class="pillar-text">PC (primary), PS5, Xbox Series X</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Stage</div>
+      <p class="pillar-text">Pre-Production — seeking vertical slice funding</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Funding Ask</div>
+      <p class="pillar-text">$280,000 – $320,000</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Source Material</div>
+      <p class="pillar-text">Ferdowsi's Shahnameh (c. 1000 AD)</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">IP Status</div>
+      <p class="pillar-text">Original — public domain source epic</p>
+    </div>
+  </div>
+  <p>HAFT KHAN is a third-person action-puzzle game based on the Seven Trials of Rostam — the greatest hero in Persian mythology — drawn from Ferdowsi's Shahnameh, the 50,000-verse national epic of Iran, written around the year 1000 AD. It is to Persian civilization what Homer's Odyssey is to Greece. It has never been adapted into a premium game. HAFT KHAN intends to change that.</p>
+</section>
+
+<!-- 2. THE GAME -->
+<section class="reveal" id="trailer">
+  <div class="section-number">02 — The Game</div>
+  <h2>Show Me the Game</h2>
+
+  <div class="trailer-wrap">
+    <iframe src="https://www.youtube.com/embed/iZn6Ke04vkQ" frameborder="0" allowfullscreen title="HAFT KHAN Trailer"></iframe>
+  </div>
+
+  <blockquote>"Your horse is smarter than most people. He is also your entire HUD."</blockquote>
+
+  <p>You play as <span class="highlight">Rostam</span> — enormous, near-immortal, carrying a mace the size of a tree. Your horse <span class="highlight">Rakhsh</span> has saved your life more times than you can count. In HAFT KHAN, Rakhsh is not just a mount — he is your compass, your threat detector, your stamina gauge, and your conscience. His breathing, his ears, his refusal to move forward: these are your UI. There is no minimap. There is no waypoint marker. There is just a very wise horse and seven mythic worlds trying to destroy you both.</p>
+
+  <h3>The Seven Worlds</h3>
+  <div class="khans-grid">
+    <div class="khan-card">
+      <div class="khan-number">I</div>
+      <div class="khan-name">The Golden Steppe</div>
+      <p class="khan-desc">Tutorial district. Open grasslands. The world teaches you everything through Rakhsh before it becomes dangerous.</p>
+    </div>
+    <div class="khan-card">
+      <div class="khan-number">II</div>
+      <div class="khan-name">River Reed Forest</div>
+      <p class="khan-desc">Dense waterlogged jungle. Visibility collapses. Sound becomes survival.</p>
+    </div>
+    <div class="khan-card">
+      <div class="khan-number">III</div>
+      <div class="khan-name">Ruins of Dej-e Maran</div>
+      <p class="khan-desc">A serpent city frozen mid-collapse. Puzzle-heavy. Architecture as enemy.</p>
+    </div>
+    <div class="khan-card">
+      <div class="khan-number">IV</div>
+      <div class="khan-name">The Darkwood</div>
+      <p class="khan-desc">No light source permitted. Rakhsh is blind. You navigate by sound and memory.</p>
+    </div>
+    <div class="khan-card">
+      <div class="khan-number">V</div>
+      <div class="khan-name">Lion's Domain</div>
+      <p class="khan-desc">A savannah ruled by a divine beast. Combat becomes ritual. Brute force will fail you.</p>
+    </div>
+    <div class="khan-card">
+      <div class="khan-number">VI–VII</div>
+      <div class="khan-name">The Witch's Court & The Dragon's Throne</div>
+      <p class="khan-desc">Deception, sorcery, and the game's final reckoning. Every mechanic converges.</p>
+    </div>
+  </div>
+
+  <h3>Four Design Principles</h3>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-title">Invisible Onboarding</div>
+      <p class="pillar-text">No tutorial prompts. The world teaches through consequence.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Progressive Diegetic HUD</div>
+      <p class="pillar-text">Every UI element is inside the world. Rakhsh is the interface.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">Alternating Rhythm</div>
+      <p class="pillar-text">Combat and puzzle beats trade off. Neither overstays its welcome.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-title">No Minimap. Ever.</div>
+      <p class="pillar-text">Spatial awareness is a skill to develop, not a crutch to rely on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. WHY NOW -->
+<section class="reveal">
+  <div class="section-number">03 — Market</div>
+  <h2>Why Should This Game Exist Now?</h2>
+
+  <p>The games market is saturated with Norse mythology, Greek mythology, and Western medieval fantasy. Players are hungry for worlds they have not already memorized. HAFT KHAN offers something genuinely new to a global audience — and something deeply resonant to the 300+ million people across Iran, Afghanistan, Tajikistan, and the broader Persian-speaking world for whom the Shahnameh is cultural bedrock.</p>
+
+  <h3>Comparable Titles</h3>
+  <table class="comp-table">
+    <tr>
+      <th>Title</th>
+      <th>What We Borrow</th>
+      <th>What We Do Differently</th>
+    </tr>
+    <tr>
+      <td>Shadow of the Colossus</td>
+      <td>Sparse world, diegetic design, mythic weight</td>
+      <td>Multi-world structure, mounted combat with full agency</td>
+    </tr>
+    <tr>
+      <td>God of War (2018)</td>
+      <td>Third-person action, narrative epic, cultural depth</td>
+      <td>Persian IP, puzzle emphasis, no omnipresent narrator</td>
+    </tr>
+    <tr>
+      <td>Assassin's Creed (Origins/Odyssey)</td>
+      <td>Historical/mythological world-building, combat</td>
+      <td>Concentrated 7-world structure, no open world bloat</td>
+    </tr>
+    <tr>
+      <td>Prince of Persia: Sands of Time</td>
+      <td>Persian aesthetic, acrobatic puzzle-action</td>
+      <td>Authentic epic source, not Western interpretation of Persia</td>
+    </tr>
+  </table>
+
+  <h3>Target Audience</h3>
+  <ul>
+    <li><strong>Primary:</strong> 22–38 year old PC/console players who completed God of War and Shadow of the Colossus and actively seek narrative-driven, world-rich action games.</li>
+    <li><strong>Secondary:</strong> Persian, Iranian, Afghan, and Central Asian diaspora players (est. 10M+ globally) who have never seen their mythology represented in a premium game.</li>
+    <li><strong>Tertiary:</strong> History, mythology, and world literature enthusiasts who engage with games as cultural artifacts.</li>
+  </ul>
+
+  <h3>The Gap</h3>
+  <p>No premium action game has ever been built authentically on the Shahnameh. Not one. The IP is 1,000 years old, universally recognized across the Middle East and Central Asia, completely public domain, and completely untouched by the games industry. That is the gap. HAFT KHAN fills it.</p>
+</section>
+
+<!-- 4. TEAM -->
+<section class="reveal">
+  <div class="section-number">04 — Team</div>
+  <h2>The Team</h2>
+
+  <p>HAFT KHAN is currently led by a single founder with a proven track record of shipping software products across multiple platforms.</p>
+
+  <h3>Ali — Founder, Director, Lead Developer</h3>
+  <ul>
+    <li>Full-stack engineer with 10+ years of product development experience</li>
+    <li>Multiple shipped software products across web, mobile (iOS Swift/SpriteKit), and desktop (Windows/WinUI)</li>
+    <li>Deep personal connection to Persian cultural heritage and the Shahnameh source material</li>
+    <li>Game design experience across multiple shipped prototypes and vertical slices</li>
+    <li>Based in Dubai, UAE</li>
+  </ul>
+
+  <h3>Planned Hires at Funding</h3>
+  <ul>
+    <li>UE5 Lead Developer (contract, 6 months)</li>
+    <li>3D Character & Environment Artist (contract)</li>
+    <li>Animator — character locomotion and mounted combat (contract)</li>
+    <li>Sound Designer (part-time)</li>
+  </ul>
+
+  <p>The studio model is lean by design for the vertical slice phase: a small, focused team executing a well-documented design with clear milestones. The founder's direct technical background means engineering decisions are made at the design level, not outsourced to an intermediary.</p>
+</section>
+
+<!-- 5. TRACTION -->
+<section class="reveal">
+  <div class="section-number">05 — Traction & Data</div>
+  <h2>Where We Are Now</h2>
+
+  <p>HAFT KHAN is in pre-production. The design foundation is complete and documented in detail.</p>
+
+  <ul>
+    <li>Full beat design completed for Khan I (Golden Steppe) — 30–40 min tutorial district, 4 beats with sub-beat breakdowns</li>
+    <li>Full world map with branching district structure documented</li>
+    <li>15-slide pitch deck produced</li>
+    <li>Concept art scenes (12 generated, style locked)</li>
+    <li>Soundtrack direction established (Suno AI + live instruments planned)</li>
+    <li>Core design language fully written: Horse is HUD, no minimap, diegetic UI, alternating rhythm</li>
+  </ul>
+
+  <h3>Data Plan Post-Funding</h3>
+  <ul>
+    <li>Greybox prototype (Month 1–2): Combat feel test with target audience</li>
+    <li>Closed playtest group recruited from Persian diaspora gaming communities</li>
+    <li>Steam wishlist page launched at prototype stage</li>
+    <li>Monthly design iteration based on playtest feedback embedded into production milestones</li>
+  </ul>
+</section>
+
+<!-- 6. MARKETING -->
+<section class="reveal">
+  <div class="section-number">06 — Community & Marketing</div>
+  <h2>Community & Marketing</h2>
+
+  <p>HAFT KHAN's greatest marketing asset is its source material. The Shahnameh is not a niche reference — it is the founding text of Persian identity, taught in schools across Iran, Afghanistan, and Tajikistan, and revered in diaspora communities worldwide. The game's existence is itself a story worth covering.</p>
+
+  <h3>Pre-Launch Strategy</h3>
+  <ul>
+    <li>Social channels to launch at prototype stage (X/Twitter, Instagram, TikTok — short-form world-lore content)</li>
+    <li>Outreach to Persian/Iranian gaming and culture media (significant underserved audience)</li>
+    <li>Steam wishlist campaign tied to vertical slice completion</li>
+    <li>Press and influencer targeting: mythology/history game channels, Middle Eastern gaming press</li>
+    <li>GDC / Gamescom submission for indie showcase consideration</li>
+  </ul>
+
+  <h3>Publisher Support Requested</h3>
+  <ul>
+    <li>Marketing strategy development and execution at launch</li>
+    <li>Press and influencer outreach infrastructure</li>
+    <li>Platform partnership relationships (Steam, PS5, Xbox)</li>
+    <li>Localization guidance for MENA and Central Asian markets</li>
+  </ul>
+</section>
+
+<!-- 7. PRODUCTION -->
+<section class="reveal">
+  <div class="section-number">07 — Production</div>
+  <h2>Production Plan</h2>
+
+  <div class="milestones">
+    <div class="milestone">
+      <div class="milestone-label">Milestone 1 — Months 1–3</div>
+      <div class="milestone-title">Greybox Prototype</div>
+      <p class="milestone-detail">Core movement, Rakhsh behavior system, one combat encounter, one puzzle encounter. Engine selected, team contracted. Deliverable: playable build for internal review.</p>
+    </div>
+    <div class="milestone">
+      <div class="milestone-label">Milestone 2 — Months 4–6</div>
+      <div class="milestone-title">Vertical Slice — Khan I (Golden Steppe)</div>
+      <p class="milestone-detail">Full art pass, final character models (Rostam + Rakhsh), complete audio design, full 30–40 min playable district. Deliverable: publisher-ready demo build.</p>
+    </div>
+    <div class="milestone">
+      <div class="milestone-label">Milestone 3 — Post Vertical Slice</div>
+      <div class="milestone-title">Full Production Funding Round</div>
+      <p class="milestone-detail">Using completed vertical slice to secure full production budget ($2.5M–$3.5M estimated) for all 7 Khans over 24–30 months.</p>
+    </div>
+  </div>
+
+  <h3>Budget Breakdown — Vertical Slice</h3>
+  <div class="budget-grid">
+    <div class="budget-item">
+      <span class="budget-label">UE5 Lead Developer</span>
+      <span class="budget-value">$12,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">3D Character Artist</span>
+      <span class="budget-value">$6,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">Environment Artist</span>
+      <span class="budget-value">$5,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">Animator</span>
+      <span class="budget-value">$6,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">Sound & Music</span>
+      <span class="budget-value">$2,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">Tools, Assets & Licenses</span>
+      <span class="budget-value">$3,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">QA & Playtesting</span>
+      <span class="budget-value">$2,000</span>
+    </div>
+    <div class="budget-item">
+      <span class="budget-label">Contingency (10%)</span>
+      <span class="budget-value">$4,000</span>
+    </div>
+    <div class="budget-total">
+      <span class="budget-label">Total Ask</span>
+      <span class="budget-value">$280,000 – $320,000</span>
+    </div>
+  </div>
+  <p style="font-size:0.85rem; color:#6A5030; margin-top:-1rem;">Note: Range reflects scope flexibility. Founder time is not billed. Upper range includes 6-month runway and full marketing setup costs.</p>
+</section>
+
+<!-- 8. ASK -->
+<section class="reveal">
+  <div class="section-number">08 — The Ask</div>
+  <h2>What We Need</h2>
+
+  <p>We are seeking a publishing partner for the vertical slice phase of HAFT KHAN. This is the proof-of-concept investment — the build that will unlock the full production round.</p>
+
+  <div class="ask-box">
+    <div class="ask-amount">$280K – $320K</div>
+    <div class="ask-label">Vertical Slice Funding</div>
+    <p class="contact-line">To discuss, contact:</p>
+    <a href="mailto:Ali.ali110@gmail.com" class="contact-email">Ali.ali110@gmail.com</a>
+  </div>
+
+  <h3>Beyond Funding</h3>
+  <ul>
+    <li>Publishing partnership for global PC and console distribution</li>
+    <li>Marketing and press infrastructure</li>
+    <li>Platform relationship support (Steam, PlayStation, Xbox)</li>
+    <li>Creative feedback and production guidance</li>
+    <li>Access to localization networks for MENA, Central Asia, East Asia</li>
+  </ul>
+
+  <div class="ornament">◆ ◆ ◆</div>
+
+  <blockquote>"The Shahnameh has waited a thousand years for a game worthy of it. We don't intend to make it wait much longer."</blockquote>
+</section>
+
+<footer>
+  HAFT KHAN © 2025 — Confidential Publisher Pitch — Ali.ali110@gmail.com
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>

@@ -114,6 +114,54 @@
     font-size: 32px;
   }
 
+  /* Haft Khan card — gold/ink theme */
+  .game-card.haft-khan {
+    background: linear-gradient(135deg, #1a1106 0%, #0D0A06 100%);
+    border: 1px solid #C9A84C;
+  }
+  .game-card.haft-khan .icon-emblem {
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    background: radial-gradient(circle at 30% 30%, #2a1f0e 0%, #0D0A06 100%);
+    border: 1px solid #C9A84C;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C9A84C;
+    font-family: "Cinzel", "Georgia", serif;
+    font-weight: 900;
+    font-size: 28px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.25);
+  }
+  .game-card.haft-khan h3 {
+    color: #E8C96A;
+    font-family: "Cinzel", "Georgia", serif;
+    letter-spacing: 2px;
+  }
+  .game-card.haft-khan .subtitle {
+    color: #C9A84C;
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .status-pitch {
+    background: rgba(201, 168, 76, 0.12);
+    color: #E8C96A;
+    border: 1px solid #7A5E2A;
+  }
+  .game-card.haft-khan a.read-more {
+    color: #E8C96A;
+    border-bottom-color: #7A5E2A;
+    font-size: 13px;
+  }
+  .game-card.haft-khan a.read-more:hover {
+    color: #fff;
+    border-bottom-color: #E8C96A;
+  }
+
   /* Contact */
   .contact-box {
     background: #131836;
@@ -173,6 +221,17 @@
         <h3>FighterJet Retro</h3>
         <span class="status status-live">★ AVAILABLE</span>
         <p class="desc">A pixel-art arcade shoot-'em-up. 100 levels, boss battles every 5 levels, retro chiptune soundtrack. Completely offline.</p>
+      </div>
+    </div>
+
+    <div class="game-card haft-khan">
+      <div class="icon-emblem">۷</div>
+      <div class="meta">
+        <h3>HAFT KHAN</h3>
+        <div class="subtitle">The Seven Trials of Rostam</div>
+        <span class="status status-pitch">★ IN DEVELOPMENT</span>
+        <p class="desc">A third-person action-puzzle game rooted in the Shahnameh — the 1,000-year-old Persian epic. Currently seeking a publishing partner for the vertical slice.</p>
+        <a href="haft-khan-pitch.html" class="read-more">Read the publisher pitch →</a>
       </div>
     </div>
 
